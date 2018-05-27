@@ -45,12 +45,16 @@
             ${cityName}, ${stateName}
           </span>
           <span class="population">
-            ${place.population}
+            ${numberWithCommas(place.population)}
           </span>
         </li>
         `;
       }).join('');
       suggestions.innerHTML = html;
+    }
+
+    function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
     const searchInput = document.querySelector('.search');
