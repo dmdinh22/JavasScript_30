@@ -25,6 +25,13 @@
       .then(blob => blob.json())
       .then(data => cities.push(...data)); // spread into function
 
+    function findMatches(wordToMatch, cities) {
+      return cities.filter(place => {
+        // figure out if city/state matches what was queried
+        const regex = new RegExp(wordToMatch, 'gi');
+        return place.city.match(regex) || place.state.match(regex)
+      });
+    }
   </script>
 </body>
 
