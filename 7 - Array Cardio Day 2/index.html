@@ -83,7 +83,13 @@
     console.log(index);
 
     // use splice to delete
-    comments.splice(index, 1);
+    //comments.splice(index, 1);
+
+    // alternative creating new array
+    const newComments = [
+      ...comments.slice(0, index),
+      ...comments.slice(index + 1)
+    ];
 
   </script>
 </body>
