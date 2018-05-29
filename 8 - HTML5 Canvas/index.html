@@ -28,10 +28,22 @@
         return; // stop function from running when not moused down
       }
       console.log(e);
+      context.beginPath();
+      // start from
+      context.moveTo(lastX, lastY);
+      // go to
+      context.lineTo(e.offsetX, e.offsetY);
+      context.stroke();
+
+      // destructuring an array - es6
+      [lastX, lastY] = [e.offsetX, e.offsetY];
     }
 
     canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mousedown', () => isDrawing = true);
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mouseout', () => isDrawing = false);
 
