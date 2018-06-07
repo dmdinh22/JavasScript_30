@@ -56,7 +56,18 @@
       };
 
       items.push(item);
+      populateList(items, itemsList);
       this.reset();
+    }
+
+    function populateList(plates = [], platesList) { // empty object to have a default empty array 
+      platesList.innerHTML = plates.map((plate, i) => {
+        return `
+          <li>
+            <label for="">${plate.text}</label>
+          </li>
+        `;
+      }).join(''); //turn array from map method into one string
     }
 
     addItems.addEventListener('submit', addItem);
