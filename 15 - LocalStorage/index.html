@@ -45,7 +45,7 @@
   <script>
     const addItems = document.querySelector('.add-items');
     const itemsList = document.querySelector('.plates');
-    const items = [];
+    const items = JSON.parse(localStorage.getItem('items')) || []; //parse if something in localStorage, or empty list
 
     function addItem(e) {
       e.preventDefault(); // prevent reload of page
@@ -57,6 +57,7 @@
 
       items.push(item);
       populateList(items, itemsList);
+      localStorage.setItem('items', JSON.stringify(items)); // JSON.stringify to convert to string
       this.reset();
     }
 
@@ -72,6 +73,9 @@
     }
 
     addItems.addEventListener('submit', addItem);
+
+    // pull data from local storage on page load
+    populateList(items, itemsList)
 
   </script>
 
