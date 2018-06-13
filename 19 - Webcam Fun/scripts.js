@@ -27,4 +27,22 @@ function paintToCanvas() {
         ctx.drawImage(video, 0, 0, width, height);
     }, 16);
 }
+
+function takePhoto() {
+    // play snapping sound
+    snap.currentTime = 0;
+    snap.play();
+
+    // take data out of canvas
+    const data = canvas.toDataURL('image/jpeg'); // returns base64
+    const link = document.createElement('a');
+
+    link.href = data;
+    link.setAttribute('download', 'awesome');
+    link.innerHTML = `<img src="${data}" alt="Awesome selfie" />`;
+    strip.insertBefore(link, strip.firstChild);
+}
+
 getVideo();
+
+video.addEventListener('canplay', paintToCanvas);
