@@ -24,9 +24,9 @@
 
     recognition.addEventListener('result', e => {
       const transcript = Array.from(e.results)
-        .map(result => result[0])
-        .map(result => result.transcript)
-        .join('');
+        .map(result => result[0]) // map over the results
+        .map(result => result.transcript) // map the transcript property
+        .join(''); // put it back into a string
 
       const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
       p.textContent = poopScript;
