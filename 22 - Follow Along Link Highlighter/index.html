@@ -67,9 +67,9 @@
         left: linkCoords.left + window.scrollX
       };
 
-      highlight.style.width = `${coords.width}px`;
-      highlight.style.height = `${coords.height}px`;
-      highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+      highlight.style.width = `${coords.width}px`; // set element width
+      highlight.style.height = `${coords.height}px`; // set element height
+      highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`; // animation dependent on coords
 
     }
 
