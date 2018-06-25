@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="style-FINISHED.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -164,17 +164,21 @@
     let topOfNav = nav.offsetTop;
 
     function fixNav() {
+      // check when user scrolls past top of navbar
       if (window.scrollY >= topOfNav) {
+        // calculate the pixels to add for proper padding to offset the navbar
         document.body.style.paddingTop = nav.offsetHeight + 'px';
+        // add class to fix navbar
         document.body.classList.add('fixed-nav');
       } else {
+        // remove fixed nav bar class
         document.body.classList.remove('fixed-nav');
+        // reset the padding
         document.body.style.paddingTop = 0;
       }
     }
 
     window.addEventListener('scroll', fixNav);
-
   </script>
 
 
