@@ -51,19 +51,19 @@
 
     function logText(e) {
       console.log(this.classList.value);
-      // e.stopPropagation(); // stop bubbling!
+      e.stopPropagation(); // stop bubbling!
       // console.log(this);
     }
 
     divs.forEach(div => div.addEventListener('click', logText, {
-      capture: false,
-      once: true
+      //capture: true // default false - on the way down
+      once: true // listens once and then unbinds
     }));
 
     button.addEventListener('click', () => {
       console.log('Click!!!');
     }, {
-        once: true
+        once: true // good for store checkouts
       });
 
   </script>
