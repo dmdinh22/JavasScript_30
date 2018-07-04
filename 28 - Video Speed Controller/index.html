@@ -26,12 +26,13 @@
       const percent = y / this.offsetHeight;
       const min = 0.4;
       const max = 4;
-      const height = Math.round(percent * 100) + '%';
-      const playbackRate = percent * (max - min) + min;
+      const height = Math.round((percent * 100)) + '%';
+      const playbackRate = percent * (max - min) + min; // math to get upper and lower bounds - offset height
       bar.style.height = height;
-      bar.textContent = playbackRate.toFixed(2) + '×';
-      video.playbackRate = playbackRate;
-    }
+      bar.textContent = playbackRate.toFixed(2); + 'x';
+      video.playbackRate = playbackRate; // set playbackRate of video player
+
+    };
 
     speed.addEventListener('mousemove', handleMove);
   </script>
