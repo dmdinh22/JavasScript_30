@@ -38,6 +38,7 @@
 
   <script>
     const slider = document.querySelector('.items');
+
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -45,7 +46,7 @@
     slider.addEventListener('mousedown', (e) => {
       isDown = true;
       slider.classList.add('active');
-      startX = e.pageX - slider.offsetLeft;
+      startX = e.pageX - slider.offsetLeft; //subtract margin offset
       scrollLeft = slider.scrollLeft;
     });
 
@@ -60,12 +61,21 @@
     });
 
     slider.addEventListener('mousemove', (e) => {
-      if (!isDown) return;  // stop the fn from running
+      if (!isDown) { // stop fn from running
+        return;
+      }
+
       e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 3;
-      slider.scrollLeft = scrollLeft - walk;
+
+      const x = e.pageX - slider.offsetLeft; // recalculate when we move mouse
+      console.log({ x, startX });
+
+      //                        *3 is for every pixel moved, scroll slider 3 pixels
+      const walk = (x - startX) * 3; // calculate how far we moved from original x point
+      slider.scrollLeft = scrollLeft - walk; // calculate from initial scrollLeft value we captured
+
     });
+
   </script>
 
 </body>
