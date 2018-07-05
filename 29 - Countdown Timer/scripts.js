@@ -1,8 +1,12 @@
 let countdown;
 const timerDisplay = document.querySelector('.display__time-left');
 const endTime = document.querySelector('.display__end-time');
+const buttons = document.querySelectorAll('[data-time]');
 
 function timer(seconds) {
+    // clear any existing timers
+    clearInterval(countdown);
+
     const now = Date.now();
     const then = now + seconds * 1000;
     //immediately run it
@@ -42,3 +46,20 @@ function displayEndTime(timestamp) {
         minutes < 10 ? '0' : ''
     }${minutes}`;
 }
+
+function startTimer() {
+    const seconds = parseInt(this.dataset.time);
+    timer(seconds);
+}
+
+buttons.forEach(button => button.addEventListener('click', startTimer));
+
+// add click handler on input form
+document.customForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const mins = this.minutes.value;
+    console.log(mins);
+
+    timer(mins * 60);
+    this.reset(); // clear out value in input
+});
